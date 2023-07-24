@@ -1,0 +1,66 @@
+---
+import { BackgroundImage } from "astro-imagetools/components";
+---
+
+<BackgroundImage
+  tag="section"
+  src="/assets/images/sloghouse.jpeg"
+  placeholder="dominantColor"
+  attributes={{
+    container: {
+      id: "hero-section",
+      title: "hero-section",
+      class: "h-screen w-screen bg-blend-multiply",
+    },
+  }}
+>
+  <p class="text-white text-4xl font-bold text-center">
+    Welcome to the Sloghouse
+  </p>
+</BackgroundImage>
+
+<script>
+  const heroSection = document.getElementById("hero-section");
+  const images = [
+    "/assets/images/sloghouse.jpeg",
+    "/assets/images/sloghouse-1.jpeg",
+    "/assets/images/sloghouse-2.jpeg",
+  ];
+  const preloadedImages: HTMLImageElement[] = [];
+
+  // Preload images function
+  const preloadImages = (urls: string[], allImages: HTMLImageElement[]) => {
+    const promises = urls.map((url) => {
+      return new Promise<void>((resolve, reject) => {
+        const img = new Image();
+        img.src = url;
+        img.onload = () => {
+          allImages.push(img);
+          resolve();
+        };
+        img.onerror = reject;
+      });
+    });
+    return Promise.all(promises);
+  };
+
+  // Start the image preloading
+  preloadImages(images, preloadedImages).then(() => {
+    const cycleImages = (
+      images: HTMLImageElement[],
+      container: HTMLElement,
+      step: number
+    ) => {
+      let currentIndex = 0;
+      const imageCount = images.length;
+      setInterval(() => {
+        container.style.backgroundImage = `linear-gradient(rgba(0,0,0, 0.3), rgba(0,0,0, 0.4)), url(${images[currentIndex]?.src})`;
+        currentIndex = (currentIndex + 1) % imageCount;
+      }, step);
+    };
+
+    if (heroSection) {
+      cycleImages(preloadedImages, heroSection, 30000);
+    }
+  });
+</script>
