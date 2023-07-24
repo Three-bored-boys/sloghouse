@@ -1,6 +1,6 @@
-/** @type {import('tailwindcss').Config} */
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
@@ -11,6 +11,12 @@ module.exports = {
           ...fontFamily.sans,
         ],
         heading: ["Padaloma", ...fontFamily.sans],
+      },
+      maxWidth: {
+        "8xl": "90rem",
+      },
+      animation: {
+        "spin-slow": "spin 30s linear infinite",
       },
     },
   },
