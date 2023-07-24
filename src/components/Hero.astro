@@ -1,5 +1,6 @@
 ---
 import { BackgroundImage } from "astro-imagetools/components";
+import Logo from "./Logo.astro";
 ---
 
 <BackgroundImage
@@ -10,16 +11,36 @@ import { BackgroundImage } from "astro-imagetools/components";
     container: {
       id: "hero-section",
       title: "hero-section",
-      class:
-        "h-screen w-screen bg-blend-multiply flex flex-col justify-center items-center",
+      class: "h-screen w-screen bg-blend-multiply",
     },
   }}
 >
-  <h1 class="text-7xl text-center italic">Welcome to Sloghouse</h1>
-  <p class="text-center">
-    <q class="text-white text-5xl text-center">The best place to slog</q>
-  </p>
+  <div
+    class="max-w-8xl flex flex-col h-full justify-center space-y-8 p-5 md:mx-auto text-center sm:text-left md:pt-28 lg:pt-20"
+  >
+    <div class="flex items-center justify-center ml-auto w-full max-w-xl">
+      <Logo
+        className="hidden w-30 h-20 sm:block sm:w-52 sm:h-36 md:w-96 md:h-52 mr-12"
+      />
+      <div id="circ" class="animate-spin-slow w-auto font-semibold">
+        &nbsp; Film . Visual Art . Creative . Content .
+      </div>
+    </div>
+    <h1 class="text-3xl md:text:5xl lg:text-7xl italic uppercase break-words">
+      We are sloghouse.
+    </h1>
+    <q class="text-white text-xl md:text-3xl lg:text-5xl md:leading-normal"
+      >Unapologetically confident and dynamically adaptable</q
+    >
+  </div>
 </BackgroundImage>
+
+<script>
+  import CircleType from "circletype";
+
+  const circ = new CircleType(document.getElementById("circ"));
+  circ.raduis(360);
+</script>
 
 <script>
   const heroSection = document.getElementById("hero-section");
@@ -62,7 +83,7 @@ import { BackgroundImage } from "astro-imagetools/components";
     };
 
     if (heroSection) {
-      cycleImages(preloadedImages, heroSection, 30000);
+      cycleImages(preloadedImages, heroSection, 10000);
     }
   });
 </script>
