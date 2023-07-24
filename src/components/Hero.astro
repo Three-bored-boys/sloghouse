@@ -10,12 +10,14 @@ import { BackgroundImage } from "astro-imagetools/components";
     container: {
       id: "hero-section",
       title: "hero-section",
-      class: "h-screen w-screen bg-blend-multiply",
+      class:
+        "h-screen w-screen bg-blend-multiply flex flex-col justify-center items-center",
     },
   }}
 >
-  <p class="text-white text-4xl font-bold text-center">
-    Welcome to the Sloghouse
+  <h1 class="text-7xl text-center italic">Welcome to Sloghouse</h1>
+  <p class="text-center">
+    <q class="text-white text-5xl text-center">The best place to slog</q>
   </p>
 </BackgroundImage>
 
