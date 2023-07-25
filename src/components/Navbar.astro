@@ -5,24 +5,98 @@ const navigationLinks = [
   { name: "Projects", href: "/projects" },
   { name: "Contact", href: "mailto:holla@sloghouse.co" },
 ];
-type Props = {};
-const {} = Astro.props;
 ---
 
 <header
   class="absolute top-0 left-0 right-0 w-full p-4 z-10 flex justify-between items-center max-w-8xl mx-auto"
 >
-  <Logo className="w-32 h-14 md:w-52 md:h-24" />
-  <nav class="md:flex items-center justify-between hidden">
-    {
-      navigationLinks.map((link) => (
-        <a
-          href={link.href}
-          class="text-white mx-4 text-xl font-medium hover:underline"
-        >
-          {link.name}
-        </a>
-      ))
-    }
+  <nav class="flex justify-between items-center w-full z-10">
+    <a href="/"> <Logo className="w-32 h-14 md:w-52 md:h-24" /></a>
+
+    <!-- Mobile menu button -->
+    <button
+      id="mobile-menu-button"
+      class="md:hidden inline-flex font-heading items-center text-white focus:outline-none"
+      aria-label="Menu"
+    >
+      <span class="text-base sm:text-xl mr-4">Menu</span>
+      <svg
+        id="menu-icon"
+        class="w-6 h-6 fill-current"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect y="8" width="24" height="2" rx="1"></rect>
+        <rect y="16" width="24" height="2" rx="1"></rect>
+      </svg>
+      <!-- "X" icon -->
+      <svg
+        id="close-icon"
+        class="hidden w-6 h-6 fill-current"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          x="3.53553"
+          y="2.82843"
+          width="24"
+          height="2"
+          rx="1"
+          transform="rotate(45 3.53553 2.82843)"></rect>
+        <rect
+          x="2.82843"
+          y="20.1421"
+          width="24"
+          height="2"
+          rx="1"
+          transform="rotate(-45 2.82843 20.1421)"></rect>
+      </svg>
+    </button>
+
+    <!-- Primary Menu -->
+    <div class="md:flex items-center justify-between hidden">
+      {
+        navigationLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-white mx-4 text-xl font-medium hover:underline"
+          >
+            {link.name}
+          </a>
+        ))
+      }
+    </div>
   </nav>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="md:hidden absolute top-0 left-0 right-0 bg-black/95 h-screen hidden"
+  >
+    <nav class="flex flex-col space-y-10 justify-center items-center h-full">
+      {
+        navigationLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-white mx-4 text-xl font-medium hover:underline"
+          >
+            {link.name}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+
+  <script>
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const closeIcon = document.getElementById("close-icon");
+    const menuIcon = document.getElementById("menu-icon");
+
+    mobileMenuButton?.addEventListener("click", () => {
+      mobileMenu?.classList.toggle("hidden");
+      closeIcon?.classList.toggle("hidden");
+      menuIcon?.classList.toggle("hidden");
+    });
+  </script>
 </header>
