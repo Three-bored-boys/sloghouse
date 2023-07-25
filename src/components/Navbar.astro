@@ -88,15 +88,17 @@ const navigationLinks = [
   </div>
 
   <script>
-    const mobileMenuButton = document.getElementById("mobile-menu-button");
-    const mobileMenu = document.getElementById("mobile-menu");
-    const closeIcon = document.getElementById("close-icon");
-    const menuIcon = document.getElementById("menu-icon");
+    document.addEventListener("DOMContentLoaded", () => {
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const closeIcon = document.getElementById("close-icon");
+      const menuIcon = document.getElementById("menu-icon");
 
-    mobileMenuButton?.addEventListener("click", () => {
-      mobileMenu?.classList.toggle("hidden");
-      closeIcon?.classList.toggle("hidden");
-      menuIcon?.classList.toggle("hidden");
+      mobileMenuButton?.addEventListener("click", () => {
+        mobileMenu?.classList.toggle("hidden");
+        closeIcon?.classList.toggle("hidden");
+        menuIcon?.classList.toggle("hidden");
+      });
     });
   </script>
 </header>
