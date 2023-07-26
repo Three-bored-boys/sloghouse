@@ -2,7 +2,7 @@
 import Logo from "./Logo.astro";
 const navigationLinks = [
   { name: "Home", href: "/" },
-  { name: "Projects", href: "/projects" },
+  { name: "Projects", href: "#" },
   { name: "Contact", href: "mailto:holla@sloghouse.co" },
 ];
 ---
@@ -78,7 +78,7 @@ const navigationLinks = [
         navigationLinks.map((link) => (
           <a
             href={link.href}
-            class="text-white mx-4 text-xl font-medium hover:underline"
+            class="text-white mx-4 text-xl font-medium hover:underline mobile-menu-link"
           >
             {link.name}
           </a>
@@ -88,13 +88,31 @@ const navigationLinks = [
   </div>
 
   <script>
+    import { animate } from "motion";
+
     document.addEventListener("DOMContentLoaded", () => {
-      const mobileMenuButton = document.getElementById("mobile-menu-button");
       const mobileMenu = document.getElementById("mobile-menu");
       const closeIcon = document.getElementById("close-icon");
       const menuIcon = document.getElementById("menu-icon");
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
 
       mobileMenuButton?.addEventListener("click", () => {
+        // create staggered animation of mobile menu links from bottom to top
+        const mobileMenuLinks = document.querySelectorAll(".mobile-menu-link");
+        mobileMenuLinks.forEach((link, index) => {
+          animate(
+            link,
+            {
+              opacity: [0, 1],
+              translateY: ["100%", "0%"],
+            },
+            {
+              duration: 0.5,
+              delay: index * 0.2,
+            }
+          );
+        });
+
         mobileMenu?.classList.toggle("hidden");
         closeIcon?.classList.toggle("hidden");
         menuIcon?.classList.toggle("hidden");
