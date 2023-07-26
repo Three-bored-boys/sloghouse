@@ -18,7 +18,10 @@ import Logo from "./Logo.astro";
   <div
     class="max-w-8xl flex flex-col h-full justify-center space-y-8 p-5 md:mx-auto text-center sm:text-left md:pt-28 lg:pt-20"
   >
-    <div class="flex items-center justify-center ml-auto w-full max-w-xl">
+    <div
+      id="logo-spin"
+      class="flex items-center justify-center ml-auto w-full max-w-xl"
+    >
       <Logo
         className="hidden w-30 h-20 sm:block sm:w-52 sm:h-36 md:w-96 md:h-52 mr-12"
       />
@@ -26,10 +29,13 @@ import Logo from "./Logo.astro";
         &nbsp; Film . Visual Art . Creative . Content .
       </div>
     </div>
-    <h1 class="text-3xl md:text:5xl lg:text-7xl italic uppercase break-words">
+    <h1
+      class="hero-text text-3xl md:text:5xl lg:text-7xl italic uppercase break-words"
+    >
       We are sloghouse.
     </h1>
-    <q class="text-white text-xl md:text-3xl lg:text-5xl md:leading-normal"
+    <q
+      class="hero-text text-white text-xl md:text-3xl lg:text-5xl md:leading-normal"
       >Unapologetically confident and dynamically adaptable</q
     >
   </div>
@@ -37,10 +43,35 @@ import Logo from "./Logo.astro";
 
 <script>
   import CircleType from "circletype";
+  import { animate } from "motion";
 
   document.addEventListener("DOMContentLoaded", function () {
     const circ = new CircleType(document.getElementById("circ"));
     circ.raduis(360);
+  });
+
+  // animations
+  animate(
+    "#logo-spin",
+    {
+      x: [100, 0],
+    },
+    { duration: 1 }
+  );
+
+  const heroTexts = document.querySelectorAll(".hero-text");
+  heroTexts.forEach((text, index) => {
+    animate(
+      text,
+      {
+        opacity: [0, 1],
+        y: [100, 0],
+      },
+      {
+        duration: 1,
+        delay: index * 0.2,
+      }
+    );
   });
 
   const heroSection = document.getElementById("hero-section");
