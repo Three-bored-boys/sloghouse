@@ -1,6 +1,6 @@
 ---
 import Hero from "../components/Hero.astro";
-import Projects from "../components/Projects.astro";
+import Projects from "../components/projects/Projects.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -10,3 +10,19 @@ import Layout from "../layouts/Layout.astro";
     <Projects />
   </main>
 </Layout>
+
+<script>
+  // import { animate, scroll } from "motion";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("section").forEach(() => {
+      // const header = document.querySelector("h2");
+      // Scroll trigger where I scroll from one section to another nd it animates into new section
+      // if (header) {
+      //   scroll(animate(header, { y: [-400, 400] }), {
+      //     target: header,
+      //   });
+      // }
+    });
+  });
+</script>
