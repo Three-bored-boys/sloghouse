@@ -2,7 +2,7 @@
 import Logo from "./Logo.astro";
 const navigationLinks = [
   { name: "Home", href: "/" },
-  { name: "Projects", href: "#" },
+  { name: "Projects", href: "#projects" },
   { name: "Contact", href: "mailto:holla@sloghouse.co" },
 ];
 ---
@@ -88,7 +88,7 @@ const navigationLinks = [
   </div>
 
   <script>
-    import { animate } from "motion";
+    import { animate, stagger } from "motion";
 
     document.addEventListener("DOMContentLoaded", () => {
       const mobileMenu = document.getElementById("mobile-menu");
@@ -99,19 +99,17 @@ const navigationLinks = [
       mobileMenuButton?.addEventListener("click", () => {
         // create staggered animation of mobile menu links from bottom to top
         const mobileMenuLinks = document.querySelectorAll(".mobile-menu-link");
-        mobileMenuLinks.forEach((link, index) => {
-          animate(
-            link,
-            {
-              opacity: [0, 1],
-              translateY: ["100%", "0%"],
-            },
-            {
-              duration: 0.5,
-              delay: index * 0.2,
-            }
-          );
-        });
+        animate(
+          mobileMenuLinks,
+          {
+            opacity: [0, 1],
+            translateY: ["100%", "0%"],
+          },
+          {
+            duration: 0.5,
+            delay: stagger(0.2),
+          }
+        );
 
         mobileMenu?.classList.toggle("hidden");
         closeIcon?.classList.toggle("hidden");
