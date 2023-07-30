@@ -18,7 +18,7 @@ import { projects } from "./data";
     </div>
     <a
       href="#"
-      class="flex items-center space-x-2 text-lg text-white md:text-xl font-medium hover:underline"
+      class="flex items-center space-x-2 text-base text-white md:text-lg lg:text-xl font-medium hover:underline"
     >
       <span>View all projects</span>
       <svg
@@ -27,7 +27,7 @@ import { projects } from "./data";
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor"
-        class="w-6 h-6"
+        class="w-5 h-5"
       >
         <path
           stroke-linecap="round"
@@ -40,15 +40,19 @@ import { projects } from "./data";
   <div id="carousel" class="relative hidden">
     {
       projects.map((project) => (
-        <div class="absolute w-[65vw] h-[50vw] top-[20vw] md:top-8 md:h-[32vw] md:w-[55vw] image-container">
+        <div class="absolute w-[65vw] h-[50vw] top-[20vw] md:top-8 md:h-[32vw] md:w-[55vw] image-container overflow-hidden">
           <img
             src={project.image}
             alt={project.name}
             class="w-full h-full object-cover rounded-3xl"
           />
-          <div class="project-text flex flex-col items-start space-y-2 absolute left-0 -bottom-4 z-50 md:bottom-0 w-full text-white bg-gradient-to-t from-black pl-4 md:px-8 md:py-12">
-            <p class="text-3xl md:text-4xl font-bold">{project.name}</p>
-            <p class="text-xl md:text-2xl font-medium">{project.description}</p>
+          <div class="project-text flex flex-col items-start space-y-2 absolute left-0 z-50 bottom-0 w-full text-white bg-gradient-to-t from-black pl-4 md:px-8 md:py-12">
+            <p class="text-xl md:text-2xl lg:text-3xl  font-bold">
+              {project.name}
+            </p>
+            <p class="text-base md:text-lg lg:text-xl font-medium">
+              {project.description}
+            </p>
           </div>
         </div>
       ))
@@ -68,16 +72,29 @@ import { projects } from "./data";
   import { projects } from "./data";
 
   let position = 1;
+  const projectLength = projects.length;
 
   function handleLeftSwipe() {
-    position = position === 0 ? projects.length - 1 : position - 1;
+    position = position === 0 ? projectLength - 1 : position - 1;
     updatePosition();
   }
 
   function handleRightSwipe() {
-    position = position === projects.length - 1 ? 0 : position + 1;
+    position = position === projectLength - 1 ? 0 : position + 1;
     updatePosition();
   }
+
+  const handleSwipe = (dir: string) => {
+    if (dir === "left") {
+      position = position === projectLength - 1 ? 0 : position + 1;
+      updatePosition();
+    }
+
+    if (dir === "right") {
+      position = position === 0 ? projectLength - 1 : position - 1;
+      updatePosition();
+    }
+  };
 
   function updatePosition() {
     const containers = document.querySelectorAll(
@@ -125,6 +142,7 @@ import { projects } from "./data";
   document.addEventListener("DOMContentLoaded", () => {
     const carousel = document.getElementById("carousel") as HTMLElement;
     carousel.style.display = "flex";
+
     if (carousel) {
       animate(
         carousel,
@@ -136,6 +154,11 @@ import { projects } from "./data";
           delay: 0.5,
         }
       );
+
+      carousel.addEventListener("swiped", function (e) {
+        // @ts-ignore
+        handleSwipe(e.detail.dir);
+      });
     }
 
     updatePosition();
