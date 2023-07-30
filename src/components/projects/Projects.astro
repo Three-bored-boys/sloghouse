@@ -37,10 +37,10 @@ import { projects } from "./data";
     </a>
   </div>
 
-  <div id="carousel" class="relative hidden">
+  <div id="carousel" class="relative hidden overflow-hidden">
     {
       projects.map((project) => (
-        <div class="absolute w-[65vw] h-[50vw] top-[20vw] md:top-8 md:h-[32vw] md:w-[55vw] image-container">
+        <div class="absolute w-[65vw] h-[50vw] top-[20vw] md:top-8 md:h-[32vw] md:w-[55vw] image-container overflow-hidden">
           <img
             src={project.image}
             alt={project.name}
