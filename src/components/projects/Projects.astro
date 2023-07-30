@@ -1,6 +1,5 @@
 ---
-import ProjectsButton from "../ProjectsButton.astro";
-
+import ProjectsButton from "./ProjectsButton.astro";
 import { projects } from "./data";
 ---
 
@@ -41,7 +40,7 @@ import { projects } from "./data";
   <div id="carousel" class="relative hidden">
     {
       projects.map((project) => (
-        <div class="image-container absolute top-[20vh] h-[50vw] w-[65vw] overflow-hidden md:top-8 md:h-[32vw] md:w-[55vw]">
+        <div class="image-container absolute top-[20vh] h-[50vw] w-[65vw] overflow-hidden lg:top-10 md:h-[32vw] md:w-[55vw]">
           <img
             src={project.image}
             alt={project.name}
