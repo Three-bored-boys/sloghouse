@@ -29,11 +29,11 @@ import Logo from "./Logo.astro";
         &nbsp; Film . Visual Art . Creative . Content .
       </div>
     </div>
-    <h1
+    <h2
       class="hero-text text-3xl md:text:5xl lg:text-7xl italic uppercase break-words"
     >
       We are sloghouse.
-    </h1>
+    </h2>
     <q
       class="hero-text text-white text-xl md:text-3xl lg:text-5xl md:leading-normal"
       >Unapologetically confident and dynamically adaptable</q
@@ -43,7 +43,7 @@ import Logo from "./Logo.astro";
 
 <script>
   import CircleType from "circletype";
-  import { animate } from "motion";
+  import { animate, stagger } from "motion";
 
   document.addEventListener("DOMContentLoaded", function () {
     const circ = new CircleType(document.getElementById("circ"));
@@ -60,19 +60,17 @@ import Logo from "./Logo.astro";
   );
 
   const heroTexts = document.querySelectorAll(".hero-text");
-  heroTexts.forEach((text, index) => {
-    animate(
-      text,
-      {
-        opacity: [0, 1],
-        y: [100, 0],
-      },
-      {
-        duration: 1,
-        delay: index * 0.2,
-      }
-    );
-  });
+  animate(
+    heroTexts,
+    {
+      opacity: [0, 1],
+      y: [100, 0],
+    },
+    {
+      duration: 1,
+      delay: stagger(0.2),
+    }
+  );
 
   const heroSection = document.getElementById("hero-section");
   const images = [
