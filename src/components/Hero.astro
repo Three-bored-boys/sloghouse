@@ -1,5 +1,6 @@
 ---
 import { BackgroundImage } from "astro-imagetools/components";
+
 import Logo from "./Logo.astro";
 ---
 
@@ -11,31 +12,31 @@ import Logo from "./Logo.astro";
     container: {
       id: "hero-section",
       title: "hero-section",
-      class: "h-screen w-screen bg-blend-multiply",
+      class: "h-[100dvh] w-screen bg-blend-multiply",
     },
   }}
 >
   <div
-    class="max-w-8xl flex flex-col h-full justify-center space-y-8 p-5 md:mx-auto text-center sm:text-left md:pt-28 lg:pt-20"
+    class="flex h-full max-w-8xl flex-col justify-center space-y-8 p-5 text-center sm:text-left md:mx-auto md:pt-28 lg:pt-20"
   >
     <div
       id="logo-spin"
-      class="flex items-center justify-center ml-auto w-full max-w-xl"
+      class="ml-auto flex w-full max-w-xl items-center justify-center"
     >
       <Logo
-        className="hidden w-30 h-20 sm:block sm:w-52 sm:h-36 md:w-96 md:h-52 mr-12"
+        className="w-30 mr-12 hidden h-20 sm:block sm:h-36 sm:w-52 md:h-52 md:w-96"
       />
-      <div id="circ" class="animate-spin-slow w-auto font-semibold">
+      <div id="circ" class="w-auto animate-spin-slow font-semibold">
         &nbsp; Film . Visual Art . Creative . Content .
       </div>
     </div>
     <h2
-      class="hero-text text-3xl md:text:5xl lg:text-7xl italic uppercase break-words"
+      class="hero-text break-words text-3xl uppercase italic md:text-5xl lg:text-7xl"
     >
       We are sloghouse.
     </h2>
     <q
-      class="hero-text text-white text-xl md:text-3xl lg:text-5xl md:leading-normal"
+      class="hero-text text-xl text-white md:text-3xl md:leading-normal lg:text-5xl"
       >Unapologetically confident and dynamically adaptable</q
     >
   </div>

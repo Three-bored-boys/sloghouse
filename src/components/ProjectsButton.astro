@@ -9,15 +9,15 @@ const { id, className, variant } = Astro.props;
 
 <button
   id={id}
-  class={`group inline-flex items-center p-1 md:px-2 md:py-2 bg-white text-black font-medium rounded-full ${className}`}
+  class={`group inline-flex items-center rounded-full bg-white p-1 font-medium text-black md:p-2 ${className}`}
   type="button"
 >
   <span class="sr-only">{`Scroll carousel ${variant}`}</span>
-  <span class="hidden md:inline-flex mx-3 uppercase"
+  <span class="mx-3 hidden uppercase md:inline-flex"
     >{variant === "left" ? "Prev" : "Next"}</span
   >
   <span
-    class="md:group-hover:bg-black md:group-hover:text-white rounded-full p-2"
+    class="rounded-full p-2 md:group-hover:bg-black md:group-hover:text-white"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +25,7 @@ const { id, className, variant } = Astro.props;
       viewBox="0 0 24 24"
       stroke-width="2"
       stroke="currentColor"
-      class="w-4 h-4 fill-white"
+      class="h-4 w-4 fill-white"
     >
       <path
         stroke-linecap="round"
