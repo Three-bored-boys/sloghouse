@@ -40,21 +40,21 @@ import { projects } from "./data";
   <div id="carousel" class="relative hidden">
     {
       projects.map((project) => (
-        <div class="image-container absolute top-[20vh] h-[50vw] w-[65vw] overflow-hidden lg:top-10 md:h-[32vw] md:w-[55vw]">
+        <article class="image-container absolute top-10 xs:top-[21vh] h-[50vw] w-[65vw] overflow-hidden lg:top-10 md:h-[32vw] md:w-[55vw]">
           <img
             src={project.image}
             alt={project.name}
             class="h-full w-full rounded-3xl object-cover"
           />
           <div class="project-text absolute bottom-0 left-0 z-50 flex w-full flex-col items-start space-y-2 bg-gradient-to-t from-black pl-4 text-white md:px-8 md:py-12">
-            <p class="text-xl font-bold md:text-2xl lg:text-3xl">
+            <h1 class="text-xl font-bold md:text-2xl lg:text-3xl">
               {project.name}
-            </p>
+            </h1>
             <p class="text-base font-medium md:text-lg lg:text-xl">
               {project.description}
             </p>
           </div>
-        </div>
+        </article>
       ))
     }
   </div>
