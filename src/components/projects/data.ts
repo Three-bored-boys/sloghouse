@@ -17,6 +17,12 @@ export const projects = [
     description: "Another house in the woods",
     image: "/assets/images/sloghouse-2.jpeg",
   },
+  {
+    id: "3",
+    name: "Slog House 3",
+    description: "Another house in the woods",
+    image: "/assets/images/sloghouse-3.jpeg",
+  },
   // repeat
   {
     id: "1",
